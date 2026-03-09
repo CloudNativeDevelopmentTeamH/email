@@ -16,10 +16,6 @@ function buildRabbitMqUrl(): string {
 export const config = {
   rabbitmq: {
     url: buildRabbitMqUrl(),
-    exchange: 'user.events',
-    exchangeType: 'topic',
-    queue: 'user.registered',
-    routingKey: 'user.registered',
   },
   smtp: {
     host: getEnv('SMTP_HOST'),

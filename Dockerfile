@@ -21,4 +21,12 @@ RUN npm ci --omit=dev
 
 COPY --from=build /app/dist ./dist
 
-CMD ["node", "./dist/server.js"]
+# Copy and set up entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Set permissions
+RUN chown -R node:node /app
+USER node
+
+ENTRYPOINT ["docker-entrypoint.sh"]

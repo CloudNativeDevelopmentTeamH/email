@@ -1,6 +1,7 @@
 import amqplib from 'amqplib';
 import pino from 'pino';
 import { config } from '../utils/config.ts';
+import { USER_EVENTS_EXCHANGE, USER_REGISTERED, REGISTRATION_EMAIL_QUEUE } from '../events.ts';
 import { sendRegistrationConfirmation } from '../services/email.service.ts';
 
 const logger = pino();
@@ -18,13 +19,26 @@ export async function startConsumer(): Promise<void> {
   connection = await amqplib.connect(config.rabbitmq.url);
   const channel = await connection.createChannel();
 
-  await channel.assertExchange(config.rabbitmq.exchange, 'topic', { durable: true });
-  await channel.assertQueue(config.rabbitmq.queue, { durable: true });
-  await channel.bindQueue(config.rabbitmq.queue, config.rabbitmq.exchange, config.rabbitmq.routingKey);
+  await channel.assertExchange(
+    USER_EVENTS_EXCHANGE,
+    'topic',
+    { durable: true }
+  );
+  
+  await channel.assertQueue(
+    REGISTRATION_EMAIL_QUEUE,
+    { durable: true }
+  );
+
+  await channel.bindQueue(
+    REGISTRATION_EMAIL_QUEUE,
+    USER_EVENTS_EXCHANGE,
+    USER_REGISTERED
+  );
 
   channel.prefetch(1);
 
-  channel.consume(config.rabbitmq.queue, (msg) => {
+  channel.consume(REGISTRATION_EMAIL_QUEUE, (msg) => {
     if (!msg) return;
 
     void (async () => {
@@ -40,7 +54,7 @@ export async function startConsumer(): Promise<void> {
     })();
   });
 
-  logger.info('Consumer bound to queue "%s"', config.rabbitmq.queue);
+  logger.info('Consumer bound to queue "%s"', REGISTRATION_EMAIL_QUEUE);
 }
 
 export async function stopConsumer(): Promise<void> {
