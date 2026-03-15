@@ -85,13 +85,13 @@ Create a `.env` file in the root directory:
 RABBITMQ_HOST=localhost
 RABBITMQ_PORT=5672
 RABBITMQ_UI_PORT=15672
-RABBITMQ_USER=test
-RABBITMQ_PASSWORD=test
+RABBITMQ_USER=user
+RABBITMQ_PASSWORD=password
 
 SMTP_HOST=sandbox.smtp.mailtrap.io
-SMTP_PORT=587
-SMTP_USER=your_mailtrap_user
-SMTP_PASS=your_mailtrap_pass
+SMTP_PORT=2525
+SMTP_USER=user
+SMTP_PASS=password
 SMTP_FROM=noreply@focusboard.app
 ```
 This `.env` configures both the Node.js server and Docker Compose to have matching configuration.
@@ -124,13 +124,13 @@ Create a `.env` file in the root directory:
 RABBITMQ_HOST=localhost
 RABBITMQ_PORT=5672
 RABBITMQ_UI_PORT=15672
-RABBITMQ_USER=test
-RABBITMQ_PASSWORD=test
+RABBITMQ_USER=user
+RABBITMQ_PASSWORD=password
 
 SMTP_HOST=sandbox.smtp.mailtrap.io
-SMTP_PORT=587
-SMTP_USER=your_mailtrap_user
-SMTP_PASS=your_mailtrap_pass
+SMTP_PORT=2525
+SMTP_USER=user
+SMTP_PASS=password
 SMTP_FROM=noreply@focusboard.app
 ```
 This `.env` configures both the Node.js server and Docker Compose to have matching configuration.
