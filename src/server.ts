@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import pino from 'pino';
 import { startConsumer, stopConsumer } from './consumers/user-registered.consumer.ts';
 

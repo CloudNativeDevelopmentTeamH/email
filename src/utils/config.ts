@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 function getEnv(name: string): string {
   if (!process.env[name]) {
     throw new Error(`Missing env: ${name}`);
@@ -6,11 +8,11 @@ function getEnv(name: string): string {
 } 
 
 function buildRabbitMqUrl(): string {
-  const user = getEnv('RABBITMQ_USER');
-  const pass = getEnv('RABBITMQ_PASSWORD');
   const host = getEnv('RABBITMQ_HOST');
   const port = getEnv('RABBITMQ_PORT');
-  return `amqp://${user}:${pass}@${host}:${port}`;
+  const user = getEnv('RABBITMQ_USER');
+  const password = getEnv('RABBITMQ_PASSWORD');
+  return `amqp://${user}:${password}@${host}:${port}`;
 }
 
 export const config = {
