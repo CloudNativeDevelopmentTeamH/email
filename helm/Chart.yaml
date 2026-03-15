@@ -1,0 +1,6 @@
+apiVersion: v2
+name: email
+description: FocusBoard - Email Service Helm Chart
+type: application
+version: 0.1.0
+icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
