@@ -173,10 +173,10 @@ The Helm chart provides a complete Kubernetes deployment including:
 
 ### Prerequisites
 
-- Kubernetes cluster (tested on AWS EKS)
+- Kubernetes cluster (tested on k3s)
 - Helm 3.x installed
 - `kubectl` configured to access your cluster
-- Container image pushed to ECR or container registry
+- Container image available in your container registry
 - RabbitMQ service already running in the cluster (e.g., from the auth service)
 
 ### Configuration
