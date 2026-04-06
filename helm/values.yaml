@@ -3,16 +3,15 @@ namespace: email
 email:
   name: email-app
   image:
-    repository: 758280076486.dkr.ecr.eu-central-1.amazonaws.com/focusboard/email
+    repository: ghcr.io/cloudnativedevelopmentteamh/focusboard/auth
     tag: latest
   replicas: 1
-  serviceAccount:
-    name: eks-service-account
-    roleArn: ""
   smtp:
     host: "sandbox.smtp.mailtrap.io"
     port: 2525
     from: "noreply@focusboard.app"
+  configmap:
+    name: app-config
 
 rabbitmq:
   host: "rabbitmq.auth.svc.cluster.local"

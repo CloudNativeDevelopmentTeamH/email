@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: {{ .Values.email.configmap.name }}
   namespace: {{ .Values.namespace | quote }}
 data:
   RABBITMQ_HOST: {{ .Values.rabbitmq.host | quote }}

@@ -21,6 +21,6 @@ spec:
           image: "{{ .Values.email.image.repository }}:{{ .Values.email.image.tag }}"
           envFrom:
             - configMapRef:
-                name: app-config
+                name: {{ .Values.email.configmap.name }}
             - secretRef:
-                name: secrets
+                name: {{ .Values.secrets.name }}
