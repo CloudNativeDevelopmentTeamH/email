@@ -3,7 +3,7 @@ namespace: email
 email:
   name: email-app
   image:
-    repository: ghcr.io/cloudnativedevelopmentteamh/focusboard/auth
+    repository: ghcr.io/cloudnativedevelopmentteamh/focusboard/email
     tag: latest
   replicas: 1
   smtp:
